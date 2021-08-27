@@ -5,7 +5,7 @@ namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\Product;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 use Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\AbstractTestCase;
 use Pim\Component\Catalog\AttributeTypes;
-use Pim\Component\Catalog\Query\Filter\Operators;
+use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\Operators;
 
 /**
  * @author    Julian PRUD'HOMME <julian.prudhomme@akeneo.com>

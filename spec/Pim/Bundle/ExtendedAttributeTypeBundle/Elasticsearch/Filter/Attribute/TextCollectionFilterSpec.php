@@ -8,10 +8,10 @@ use Pim\Bundle\CatalogBundle\Elasticsearch\SearchQueryBuilder;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 use Pim\Bundle\ExtendedAttributeTypeBundle\Elasticsearch\Filter\Attribute\TextCollectionFilter;
 use Pim\Component\Catalog\AttributeTypes;
-use Pim\Component\Catalog\Exception\InvalidOperatorException;
-use Pim\Component\Catalog\Model\AttributeInterface;
-use Pim\Component\Catalog\Query\Filter\AttributeFilterInterface;
-use Pim\Component\Catalog\Query\Filter\Operators;
+use Akeneo\Pim\Enrichment\Component\Product\Exception\InvalidOperatorException;
+use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\AttributeFilterInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\Operators;
 use Pim\Component\Catalog\Validator\AttributeValidatorHelper;
 use Prophecy\Argument;
 

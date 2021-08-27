@@ -3,10 +3,10 @@
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration;
 
 use Akeneo\Component\Batch\Model\JobInstance;
-use Pim\Component\Catalog\Model\AttributeInterface;
-use Pim\Component\Catalog\Model\ChannelInterface;
-use Pim\Component\Catalog\Model\FamilyInterface;
-use Pim\Component\Catalog\Model\ProductInterface;
+use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
+use Akeneo\Channel\Component\Model\ChannelInterface;
+use Akeneo\Channel\Component\Model\FamilyInterface;
+use Akeneo\Channel\Component\Model\ProductInterface;
 use Pim\Component\Catalog\Repository\ChannelRepositoryInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 

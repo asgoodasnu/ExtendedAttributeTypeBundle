@@ -3,23 +3,21 @@
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Completeness\Checker;
 
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
-use Pim\Component\Catalog\Completeness\Checker\ValueCompleteCheckerInterface;
-use Pim\Component\Catalog\Model\ChannelInterface;
-use Pim\Component\Catalog\Model\LocaleInterface;
-use Pim\Component\Catalog\Model\ValueInterface;
+use Akeneo\Channel\Component\Model\ChannelInterface;
+use Akeneo\Channel\Component\Model\LocaleInterface;
 
 /**
  * @author    JM Leroux <jean-marie.leroux@akeneo.com>
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class TextCollectionCompleteChecker implements ValueCompleteCheckerInterface
+class TextCollectionCompleteChecker
 {
     /**
      * {@inheritdoc}
      */
     public function isComplete(
-        ValueInterface $value,
+        $value,
         ChannelInterface $channel = null,
         LocaleInterface $locale = null
     ) {
@@ -40,7 +38,7 @@ class TextCollectionCompleteChecker implements ValueCompleteCheckerInterface
      * {@inheritdoc}
      */
     public function supportsValue(
-        ValueInterface $value,
+        $value,
         ChannelInterface $channel,
         LocaleInterface $locale
     ) {

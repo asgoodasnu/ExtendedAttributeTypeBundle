@@ -4,7 +4,7 @@ namespace spec\Pim\Bundle\ExtendedAttributeTypeBundle\Validator\ConstraintGuesse
 
 use PhpSpec\ObjectBehavior;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
-use Pim\Component\Catalog\Model\AttributeInterface;
+use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 
 class EmailGuesserSpec extends ObjectBehavior
 {

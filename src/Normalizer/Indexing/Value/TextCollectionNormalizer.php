@@ -2,12 +2,9 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Normalizer\Indexing\Value;
 
+use Akeneo\Pim\Enrichment\Component\Product\Model\ValueInterface;
 use Pim\Bundle\ExtendedAttributeTypeBundle\Model\TextCollectionValue;
-use Pim\Component\Catalog\Model\ValueInterface;
-use Pim\Component\Catalog\Normalizer\Indexing\Product\ProductNormalizer;
-use Pim\Component\Catalog\Normalizer\Indexing\ProductAndProductModel;
-use Pim\Component\Catalog\Normalizer\Indexing\ProductModel;
-use Pim\Component\Catalog\Normalizer\Indexing\Value\AbstractProductValueNormalizer;
+use Akeneo\Pim\Enrichment\Component\Product\Normalizer\Indexing\Value\AbstractProductValueNormalizer;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
@@ -19,15 +16,19 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
  */
 class TextCollectionNormalizer extends AbstractProductValueNormalizer implements NormalizerInterface
 {
+    public const INDEXING_FORMAT_PRODUCT_INDEX = 'indexing_product';
+    public const INDEXING_FORMAT_PRODUCT_MODEL_INDEX = 'indexing_product_model';
+    public const INDEXING_FORMAT_PRODUCT_AND_MODEL_INDEX = 'indexing_product_and_product_model';
+
     /**
      * {@inheritdoc}
      */
     public function supportsNormalization($data, $format = null)
     {
         return $data instanceof TextCollectionValue && (
-                $format === ProductNormalizer::INDEXING_FORMAT_PRODUCT_INDEX ||
-                $format === ProductModel\ProductModelNormalizer::INDEXING_FORMAT_PRODUCT_MODEL_INDEX ||
-                $format === ProductAndProductModel\ProductModelNormalizer::INDEXING_FORMAT_PRODUCT_AND_MODEL_INDEX
+                $format === self::INDEXING_FORMAT_PRODUCT_INDEX ||
+                $format === self::INDEXING_FORMAT_PRODUCT_MODEL_INDEX ||
+                $format === self::INDEXING_FORMAT_PRODUCT_AND_MODEL_INDEX
             );
     }
 

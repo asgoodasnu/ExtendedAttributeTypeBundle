@@ -4,10 +4,10 @@ namespace spec\Pim\Bundle\ExtendedAttributeTypeBundle\Completeness\Checker;
 
 use PhpSpec\ObjectBehavior;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
-use Pim\Component\Catalog\Model\AttributeInterface;
-use Pim\Component\Catalog\Model\ChannelInterface;
-use Pim\Component\Catalog\Model\LocaleInterface;
-use Pim\Component\Catalog\Model\ValueInterface;
+use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
+use Akeneo\Channel\Component\Model\ChannelInterface;
+use Akeneo\Channel\Component\Model\LocaleInterface;
+use Akeneo\Channel\Component\Model\ValueInterface;
 
 class TextCollectionCompleteCheckerSpec extends ObjectBehavior
 {

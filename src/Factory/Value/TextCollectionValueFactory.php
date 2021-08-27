@@ -2,10 +2,8 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Factory\Value;
 
-use Akeneo\Component\StorageUtils\Exception\InvalidPropertyTypeException;
-use Pim\Component\Catalog\AttributeTypes;
-use Pim\Component\Catalog\Factory\Value\ValueFactoryInterface;
-use Pim\Component\Catalog\Model\AttributeInterface;
+use Akeneo\Tool\Component\StorageUtils\Exception\InvalidPropertyTypeException;
+use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 
 /**
  * Factory that creates simple product values (text, textarea and number).
@@ -14,8 +12,10 @@ use Pim\Component\Catalog\Model\AttributeInterface;
  * @copyright 2017 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class TextCollectionValueFactory implements ValueFactoryInterface
+class TextCollectionValueFactory
 {
+    const BOOLEAN = 'pim_catalog_boolean';
+
     /** @var string */
     protected $productValueClass;
 
@@ -89,7 +89,7 @@ class TextCollectionValueFactory implements ValueFactoryInterface
             $data = null;
         }
 
-        if (AttributeTypes::BOOLEAN === $attribute->getType() &&
+        if (self::BOOLEAN === $attribute->getType() &&
             (1 === $data || '1' === $data || 0 === $data || '0' === $data)
         ) {
             $data = boolval($data);

@@ -13,7 +13,7 @@ class TextCollectionComparatorSpec extends ObjectBehavior
 
     function it_is_a_comparator()
     {
-        $this->shouldBeAnInstanceOf('Pim\Component\Catalog\Comparator\ComparatorInterface');
+        $this->shouldBeAnInstanceOf('Akeneo\Pim\Enrichment\Component\Product\Comparator\ComparatorInterface');
     }
 
     function it_supports_price_type()

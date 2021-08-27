@@ -4,7 +4,7 @@ namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\Product;
 
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 use Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\AbstractTestCase;
-use Pim\Component\Catalog\Model\ProductInterface;
+use Akeneo\Channel\Component\Model\ProductInterface;
 use Pim\Component\Catalog\Repository\ProductRepositoryInterface;
 use Pim\Component\Catalog\Updater\ProductUpdater;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class CreateProductTest extends AbstractTestCase
 {
     /** @var ContainerInterface */
-    private $container;
+    protected $container;
 
     protected function setUp()
     {

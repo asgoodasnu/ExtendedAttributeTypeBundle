@@ -4,8 +4,8 @@ namespace spec\Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType;
 
 use PhpSpec\ObjectBehavior;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
-use Pim\Component\Catalog\Model\AttributeInterface;
-use Pim\Component\Catalog\Model\ValueInterface;
+use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
+use Akeneo\Channel\Component\Model\ValueInterface;
 use Pim\Component\Catalog\Validator\AttributeConstraintGuesser;
 use Prophecy\Argument;
 
