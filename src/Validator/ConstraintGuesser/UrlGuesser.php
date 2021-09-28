@@ -4,7 +4,7 @@ namespace Pim\Bundle\ExtendedAttributeTypeBundle\Validator\ConstraintGuesser;
 
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
-use Akeneo\Pim\Enrichment\Component\Product\Validator\UrlGuesser as PimUrlGuesser;
+use Akeneo\Pim\Enrichment\Component\Product\Validator\ConstraintGuesser\UrlGuesser as PimUrlGuesser;
 
 /**
  * Url guesser
