@@ -5,6 +5,7 @@ namespace Pim\Bundle\ExtendedAttributeTypeBundle\Model;
 use Akeneo\Pim\Enrichment\Component\Product\Model\AbstractValue;
 use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Model\ValueInterface;
+use Akeneo\Pim\Structure\Component\Query\PublicApi\AttributeType\Attribute;
 
 /**
  * Product value for TextCollection atribute type
@@ -19,18 +20,11 @@ class TextCollectionValue extends AbstractValue implements ValueInterface
     protected $data;
 
     /**
-     * @param AttributeInterface $attribute
-     * @param string             $channel
-     * @param string             $locale
      * @param mixed              $data
      */
-    public function __construct(AttributeInterface $attribute, $channel, $locale, $data)
+    public function __construct(Attribute $attribute, ?string $scopeCode, ?string $localeCode, $data)
     {
-        $this->setAttribute($attribute);
-        $this->setScope($channel);
-        $this->setLocale($locale);
-
-        $this->data = $data;
+        parent::__construct($attribute->code(), $data, $scopeCode, $localeCode);
     }
 
     /**
@@ -55,8 +49,13 @@ class TextCollectionValue extends AbstractValue implements ValueInterface
     /**
      * {@inheritdoc}
      */
-    public function __toString()
+    public function __toString(): string
     {
         return implode(', ', $this->data);
+    }
+
+    public function isEqual(ValueInterface $value): bool
+    {
+        return $this->__toString() === $value->__toString();
     }
 }

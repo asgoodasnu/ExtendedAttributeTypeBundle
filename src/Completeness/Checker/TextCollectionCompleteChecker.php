@@ -44,4 +44,10 @@ class TextCollectionCompleteChecker
     ) {
         return ExtendedAttributeTypes::TEXT_COLLECTION === $value->getAttribute()->getType();
     }
+
+    public function supportedAttributeTypes(): array
+    {
+        return [ExtendedAttributeTypes::TEXT_COLLECTION];
+    }
+
 }
