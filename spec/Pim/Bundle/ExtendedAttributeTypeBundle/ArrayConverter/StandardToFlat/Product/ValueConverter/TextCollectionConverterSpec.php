@@ -21,7 +21,7 @@ class TextCollectionConverterSpec extends ObjectBehavior
     function it_is_a_converter()
     {
         $this->shouldImplement(
-            'Pim\Component\Connector\ArrayConverter\StandardToFlat\Product\ValueConverter\ValueConverterInterface'
+            'Akeneo\Pim\Enrichment\Component\Product\Connector\ArrayConverter\FlatToStandard\ValueConverter\ValueConverterInterface'
         );
     }
 

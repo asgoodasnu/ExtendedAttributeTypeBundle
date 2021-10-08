@@ -10,4 +10,4 @@ services:
             - text
             - '@pim_catalog.validator.constraint_guesser.chained_attribute'
         tags:
-            - { name: pim_catalog.attribute_type, alias: pim_catalog_text_collection }
+            - { name: pim_catalog.attribute_type, alias: pim_catalog_text_collection, entity: '%pim_catalog.entity.product.class%' }

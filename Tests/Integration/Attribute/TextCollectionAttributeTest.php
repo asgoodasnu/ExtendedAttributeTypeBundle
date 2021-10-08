@@ -2,11 +2,11 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\Attribute;
 
-use Akeneo\Component\StorageUtils\Exception\InvalidPropertyTypeException;
+use Akeneo\Tool\Component\StorageUtils\Exception\InvalidPropertyTypeException;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 use Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\AbstractTestCase;
-use Pim\Component\Catalog\Model\AttributeInterface;
-use Pim\Component\Catalog\Model\FamilyInterface;
+use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
+use Akeneo\Channel\Component\Model\FamilyInterface;
 
 /**
  * @author    Mathias METAYER <mathias.metayer@akeneo.com>

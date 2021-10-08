@@ -2,7 +2,6 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle;
 
-use Pim\Bundle\ElasticSearchBundle\Query\ProductQueryUtility;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -19,7 +18,7 @@ class PimExtendedAttributeTypeBundle extends Bundle
 
         $registeredBundles = $this->container->getParameter('kernel.bundles');
         if (array_key_exists('PimElasticSearchBundle', $registeredBundles)) {
-            ProductQueryUtility::addTypeSuffix(ExtendedAttributeTypes::TEXT_COLLECTION, ProductQueryUtility::SUFFIX_TEXT);
+            Pim\Bundle\ElasticSearchBundle\Query\ProductQueryUtility::addTypeSuffix(ExtendedAttributeTypes::TEXT_COLLECTION, ProductQueryUtility::SUFFIX_TEXT);
         }
     }
 }

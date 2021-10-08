@@ -3,8 +3,8 @@
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\Job;
 
 use Akeneo\Bundle\BatchBundle\Command\BatchCommand;
-use Pim\Component\Catalog\Model\ProductInterface;
-use Pim\Component\Catalog\Query\Filter\Operators;
+use Akeneo\Channel\Component\Model\ProductInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\Operators;
 use Pim\Component\Catalog\Query\ProductQueryBuilderInterface;
 
 /**

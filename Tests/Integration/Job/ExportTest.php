@@ -3,7 +3,7 @@
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\Job;
 
 use Akeneo\Bundle\BatchBundle\Command\BatchCommand;
-use Pim\Component\Catalog\Query\Filter\Operators;
+use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\Operators;
 use Symfony\Component\Finder\Finder;
 
 /**

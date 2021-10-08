@@ -2,10 +2,11 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Factory\Value;
 
-use Akeneo\Component\StorageUtils\Exception\InvalidPropertyTypeException;
-use Pim\Component\Catalog\AttributeTypes;
-use Pim\Component\Catalog\Factory\Value\ValueFactoryInterface;
-use Pim\Component\Catalog\Model\AttributeInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Factory\Value\ValueFactory;
+use Akeneo\Tool\Component\StorageUtils\Exception\InvalidPropertyTypeException;
+use Akeneo\Pim\Structure\Component\Query\PublicApi\AttributeType\Attribute;
+use Akeneo\Pim\Enrichment\Component\Product\Model\ValueInterface;
+use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 
 /**
  * Factory that creates simple product values (text, textarea and number).
@@ -14,8 +15,10 @@ use Pim\Component\Catalog\Model\AttributeInterface;
  * @copyright 2017 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class TextCollectionValueFactory implements ValueFactoryInterface
+class TextCollectionValueFactory implements ValueFactory
 {
+    const BOOLEAN = 'pim_catalog_boolean';
+
     /** @var string */
     protected $productValueClass;
 
@@ -35,10 +38,21 @@ class TextCollectionValueFactory implements ValueFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function create(AttributeInterface $attribute, $channelCode, $localeCode, $data)
+    public function createByCheckingData(Attribute $attribute, ?string $channelCode, ?string $localeCode, $data): ValueInterface
     {
         $this->checkData($attribute, $data);
 
+        if (null !== $data) {
+            $data = $this->convertData($attribute, $data);
+        }
+
+        $value = new $this->productValueClass($attribute, $channelCode, $localeCode, $data);
+
+        return $value;
+    }
+
+    public function createWithoutCheckingData(Attribute $attribute, ?string $channelCode, ?string $localeCode, $data): ValueInterface
+    {
         if (null !== $data) {
             $data = $this->convertData($attribute, $data);
         }
@@ -56,13 +70,18 @@ class TextCollectionValueFactory implements ValueFactoryInterface
         return $attributeType === $this->supportedAttributeTypes;
     }
 
+    public function supportedAttributeType(): string
+    {
+        return ExtendedAttributeTypes::TEXT_COLLECTION;
+    }
+
     /**
      * @param AttributeInterface $attribute
      * @param mixed              $data
      *
      * @throws InvalidPropertyTypeException
      */
-    protected function checkData(AttributeInterface $attribute, $data)
+    protected function checkData(Attribute $attribute, $data)
     {
         if (null === $data) {
             return;
@@ -83,13 +102,13 @@ class TextCollectionValueFactory implements ValueFactoryInterface
      *
      * @return mixed
      */
-    protected function convertData(AttributeInterface $attribute, $data)
+    protected function convertData(Attribute $attribute, $data)
     {
         if (is_string($data) && '' === trim($data)) {
             $data = null;
         }
 
-        if (AttributeTypes::BOOLEAN === $attribute->getType() &&
+        if (self::BOOLEAN === $attribute->type() &&
             (1 === $data || '1' === $data || 0 === $data || '0' === $data)
         ) {
             $data = boolval($data);

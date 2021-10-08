@@ -6,7 +6,7 @@ services:
         class: '%pimee_workflow.query.elasticsearch.filter.text_collection.class%'
         arguments:
             - '@pimee_workflow.query.elasticsearch.attribute_path_resolver'
-            - [!php/const:\Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes::TEXT_COLLECTION]
+            - [!php/const:Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes::TEXT_COLLECTION]
             - ['CONTAINS', 'DOES NOT CONTAIN', 'EMPTY', 'NOT EMPTY']
         tags:
             - { name: 'pimee_workflow.elasticsearch.query.product_proposal_filter', priority: 40 }
