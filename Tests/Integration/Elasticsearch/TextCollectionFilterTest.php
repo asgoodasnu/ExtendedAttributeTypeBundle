@@ -2,11 +2,11 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\Elasticsearch;
 
+use Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Query\ProductQueryBuilderFactoryInterface;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 use Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\AbstractTestCase;
-use Akeneo\Channel\Component\Model\ProductInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\Operators;
-use Pim\Component\Catalog\Query\ProductQueryBuilderFactoryInterface;
 
 /**
  * @author    Mathias METAYER <mathias.metayer@akeneo.com>
@@ -18,7 +18,7 @@ class TextCollectionFilterTest extends AbstractTestCase
     /** @var ProductQueryBuilderFactoryInterface */
     private $pqbFactory;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->loadData();

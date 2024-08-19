@@ -3,6 +3,7 @@
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Factory\Value;
 
 use Akeneo\Pim\Enrichment\Component\Product\Factory\Value\ValueFactory;
+use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 use Akeneo\Tool\Component\StorageUtils\Exception\InvalidPropertyTypeException;
 use Akeneo\Pim\Structure\Component\Query\PublicApi\AttributeType\Attribute;
 use Akeneo\Pim\Enrichment\Component\Product\Model\ValueInterface;

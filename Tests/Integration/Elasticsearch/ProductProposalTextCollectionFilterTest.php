@@ -2,12 +2,12 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\Elasticsearch;
 
-use Akeneo\Bundle\ElasticsearchBundle\Client;
+use Akeneo\Pim\Enrichment\Component\Product\Query\ProductQueryBuilderFactoryInterface;
+use Akeneo\Tool\Bundle\ElasticsearchBundle\Client;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 use Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\AbstractTestCase;
 use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\Operators;
-use Pim\Component\Catalog\Query\ProductQueryBuilderFactoryInterface;
 
 /**
  * @author    Mathias METAYER <mathias.metayer@akeneo.com>

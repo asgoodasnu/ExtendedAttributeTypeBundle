@@ -3,8 +3,8 @@
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Model;
 
 use Akeneo\Pim\Enrichment\Component\Product\Model\AbstractValue;
-use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Model\ValueInterface;
+use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 use Akeneo\Pim\Structure\Component\Query\PublicApi\AttributeType\Attribute;
 
 /**

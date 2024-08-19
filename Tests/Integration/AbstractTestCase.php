@@ -2,8 +2,8 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration;
 
-use Akeneo\Bundle\BatchBundle\Command\BatchCommand;
 use Akeneo\Test\Integration\TestCase;
+use Akeneo\Tool\Bundle\BatchBundle\Command\BatchCommand;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;

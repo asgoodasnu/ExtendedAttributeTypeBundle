@@ -20,7 +20,8 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "@stable",
-        "phpspec/phpspec": "@stable"
+        "phpspec/phpspec": "@stable",
+        "phpunit/phpunit": "^10"
     },
     "autoload": {
         "psr-4": {

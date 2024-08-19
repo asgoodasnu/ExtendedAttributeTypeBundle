@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Completeness\MaskItemGenerator;
 
 use Akeneo\Pim\Enrichment\Component\Product\Completeness\MaskItemGenerator\MaskItemGeneratorForAttributeType;
-use Akeneo\Pim\Structure\Component\AttributeTypes;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 
 class TextCollectionMaskItemGenerator implements MaskItemGeneratorForAttributeType

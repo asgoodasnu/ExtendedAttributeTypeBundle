@@ -2,9 +2,9 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Completeness\Checker;
 
+use Akeneo\Channel\Infrastructure\Component\Model\ChannelInterface;
+use Akeneo\Channel\Infrastructure\Component\Model\LocaleInterface;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
-use Akeneo\Channel\Component\Model\ChannelInterface;
-use Akeneo\Channel\Component\Model\LocaleInterface;
 
 /**
  * @author    JM Leroux <jean-marie.leroux@akeneo.com>
