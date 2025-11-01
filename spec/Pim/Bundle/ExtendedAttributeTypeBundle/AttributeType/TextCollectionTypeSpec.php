@@ -4,18 +4,12 @@ namespace spec\Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType;
 
 use PhpSpec\ObjectBehavior;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
-use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
-use Akeneo\Channel\Component\Model\ValueInterface;
-use Pim\Component\Catalog\Validator\AttributeConstraintGuesser;
-use Prophecy\Argument;
 
 class TextCollectionTypeSpec extends ObjectBehavior
 {
-    function let(AttributeConstraintGuesser $guesser, ValueInterface $value, AttributeInterface $name)
+    function let()
     {
-        $value->getAttribute()->willReturn($name);
-
-        $this->beConstructedWith(ExtendedAttributeTypes::BACKEND_TYPE_TEXT_COLLECTION, 'text', $guesser);
+        $this->beConstructedWith(ExtendedAttributeTypes::BACKEND_TYPE_TEXT_COLLECTION);
     }
 
     function it_has_a_name()

@@ -19,7 +19,7 @@ class TextCollectionType extends AbstractAttributeType
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return ExtendedAttributeTypes::TEXT_COLLECTION;
     }

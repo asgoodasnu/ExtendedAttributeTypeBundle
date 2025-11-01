@@ -6,7 +6,7 @@ use Oro\Bundle\FilterBundle\Form\Type\Filter\FilterType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * TextCollectionFilterType to display the grid filter
@@ -15,13 +15,13 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 class TextCollectionFilterType extends AbstractType
 {
-    const TYPE_CONTAINS = 1;
-    const TYPE_NOT_CONTAINS = 2;
+    private const TYPE_CONTAINS = 1;
+    private const TYPE_NOT_CONTAINS = 2;
 
     const NAME = 'pim_type_text_collection_filter';
 
     /** @var TranslatorInterface */
-    protected $translator;
+    protected TranslatorInterface $translator;
 
     /**
      * @param TranslatorInterface $translator
@@ -50,7 +50,7 @@ class TextCollectionFilterType extends AbstractType
     /**
      * {@inheritDoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $choices = [
             self::TYPE_CONTAINS        => $this->translator->trans('oro.filter.form.label_type_contains'),

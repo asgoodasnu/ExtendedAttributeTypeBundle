@@ -2,12 +2,11 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\Product;
 
+use Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Repository\ProductRepositoryInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Updater\ProductUpdater;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 use Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\AbstractTestCase;
-use Akeneo\Channel\Component\Model\ProductInterface;
-use Pim\Component\Catalog\Repository\ProductRepositoryInterface;
-use Pim\Component\Catalog\Updater\ProductUpdater;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * @author    Romain Monceau <romain@akeneo.com>
@@ -15,14 +14,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class CreateProductTest extends AbstractTestCase
 {
-    /** @var ContainerInterface */
-    protected $container;
+    /**
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface
+     */
+    private $testContainer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
-        $this->container = static::$kernel->getContainer();
+        $this->testContainer = static::$kernel->getContainer();
 
         $dataAttribute = ['code' => 'eans', 'type' => ExtendedAttributeTypes::TEXT_COLLECTION];
         $this->getDataLoader()->createAttribute($dataAttribute);
@@ -146,7 +147,7 @@ class CreateProductTest extends AbstractTestCase
      */
     private function validate(ProductInterface $product)
     {
-        return $this->container->get('pim_catalog.validator.product')->validate($product);
+        return $this->testContainer->get('pim_catalog.validator.product')->validate($product);
     }
 
     /**
@@ -154,7 +155,7 @@ class CreateProductTest extends AbstractTestCase
      */
     private function saveProduct(ProductInterface $product)
     {
-        $this->container->get('pim_catalog.saver.product')->save($product);
+        $this->testContainer->get('pim_catalog.saver.product')->save($product);
         $this->clear();
     }
 }

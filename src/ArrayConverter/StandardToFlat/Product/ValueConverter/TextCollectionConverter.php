@@ -42,7 +42,7 @@ class TextCollectionConverter extends AbstractValueConverter implements ValueCon
      *
      * @return array
      */
-    public function convert($attributeCode, $data)
+    public function convert($attributeCode, $data): array
     {
         $convertedItem = [];
 

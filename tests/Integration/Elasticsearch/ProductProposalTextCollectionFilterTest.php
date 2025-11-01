@@ -2,12 +2,12 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\Elasticsearch;
 
-use Akeneo\Bundle\ElasticsearchBundle\Client;
+use Akeneo\Pim\Enrichment\Component\Product\Query\ProductQueryBuilderFactoryInterface;
+use Akeneo\Tool\Bundle\ElasticsearchBundle\Client;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 use Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\AbstractTestCase;
 use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\Operators;
-use Pim\Component\Catalog\Query\ProductQueryBuilderFactoryInterface;
 
 /**
  * @author    Mathias METAYER <mathias.metayer@akeneo.com>
@@ -31,13 +31,12 @@ class ProductProposalTextCollectionFilterTest extends AbstractTestCase
     /**
      * {@inhritdoc}
      */
-    protected function setUp()
+    public function setUp(): void
     {
         if ('enterprise' !== static::getEdition()) {
             $this->markTestSkipped('Only relevant for enterprise edition');
-
-            return;
         }
+
         parent::setUp();
 
         $this->esProposalProductClient = $this->get('akeneo_elasticsearch.client.product_proposal');

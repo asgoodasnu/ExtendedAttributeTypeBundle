@@ -2,8 +2,8 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\Job;
 
-use Akeneo\Bundle\BatchBundle\Command\BatchCommand;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\Operators;
+use Akeneo\Tool\Bundle\BatchBundle\Command\BatchCommand;
 use Symfony\Component\Finder\Finder;
 
 /**
@@ -16,7 +16,7 @@ class ExportTest extends AbstractImportExportTestCase
     /**
      * {@inheritdoc}
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $finder = new Finder();
         $files = $finder->files()->name('*.csv')->in(static::$exportPath);

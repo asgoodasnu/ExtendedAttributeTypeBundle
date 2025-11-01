@@ -2,13 +2,13 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Elasticsearch\Filter\Attribute;
 
+use Akeneo\Pim\Enrichment\Component\Product\Validator\ElasticsearchFilterValidator;
 use Akeneo\Tool\Component\StorageUtils\Exception\InvalidPropertyTypeException;
 use Akeneo\Pim\Enrichment\Bundle\Elasticsearch\Filter\Attribute\AbstractAttributeFilter;
 use Akeneo\Pim\Enrichment\Component\Product\Exception\InvalidOperatorException;
 use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\AttributeFilterInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\Operators;
-
 use Akeneo\Pim\Enrichment\Component\Product\Validator\AttributeValidatorHelper;
 
 /**
@@ -18,17 +18,18 @@ use Akeneo\Pim\Enrichment\Component\Product\Validator\AttributeValidatorHelper;
  */
 class TextCollectionFilter extends AbstractAttributeFilter implements AttributeFilterInterface
 {
+
     /**
      * @param AttributeValidatorHelper $attrValidatorHelper
      * @param array                    $supportedAttributeTypes
      * @param array                    $supportedOperators
      */
     public function __construct(
-        AttributeValidatorHelper $attrValidatorHelper,
+        ElasticsearchFilterValidator $filterValidator,
         array $supportedAttributeTypes = [],
         array $supportedOperators = []
     ) {
-        $this->attrValidatorHelper = $attrValidatorHelper;
+        $this->filterValidator = $filterValidator;
         $this->supportedAttributeTypes = $supportedAttributeTypes;
         $this->supportedOperators = $supportedOperators;
     }
@@ -43,7 +44,7 @@ class TextCollectionFilter extends AbstractAttributeFilter implements AttributeF
         $locale = null,
         $channel = null,
         $options = []
-    ) {
+    ): AttributeFilterInterface|static {
         if (null === $this->searchQueryBuilder) {
             throw new \LogicException('The search query builder is not initialized in the filter.');
         }
@@ -111,7 +112,7 @@ class TextCollectionFilter extends AbstractAttributeFilter implements AttributeF
      * @param AttributeInterface $attribute
      * @param mixed              $value
      */
-    protected function checkValue(AttributeInterface $attribute, $value)
+    protected function checkValue(AttributeInterface $attribute, $value): void
     {
         if (!is_string($value) && null !== $value) {
             throw InvalidPropertyTypeException::stringExpected($attribute->getCode(), static::class, $value);
