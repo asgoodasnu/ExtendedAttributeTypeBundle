@@ -31,13 +31,12 @@ class ProductProposalTextCollectionFilterTest extends AbstractTestCase
     /**
      * {@inhritdoc}
      */
-    protected function setUp()
+    public function setUp(): void
     {
         if ('enterprise' !== static::getEdition()) {
             $this->markTestSkipped('Only relevant for enterprise edition');
-
-            return;
         }
+
         parent::setUp();
 
         $this->esProposalProductClient = $this->get('akeneo_elasticsearch.client.product_proposal');

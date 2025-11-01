@@ -2,6 +2,8 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Elasticsearch\Filter\Attribute;
 
+use Akeneo\Pim\Enrichment\Component\Product\Validator\ElasticsearchFilterValidator;
+use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 use Akeneo\Tool\Component\StorageUtils\Exception\InvalidPropertyTypeException;
 use Akeneo\Pim\Enrichment\Bundle\Elasticsearch\Filter\Attribute\AbstractAttributeFilter;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\AttributeFilterInterface;
@@ -17,16 +19,16 @@ use PimEnterprise\Bundle\WorkflowBundle\Elasticsearch\Filter\Attribute\ProposalA
 class ProductProposalTextCollectionFilter extends AbstractAttributeFilter implements AttributeFilterInterface
 {
     /**
-     * @param ProposalAttributePathResolver $attributePathResolver
+     * @param ProposalAttributePathResolver $filterValidator
      * @param array $supportedAttributeTypes
      * @param array $supportedOperators
      */
     public function __construct(
-        ProposalAttributePathResolver $attributePathResolver,
-        array $supportedAttributeTypes = [],
-        array $supportedOperators = []
+        ElasticsearchFilterValidator $filterValidator,
+        array                        $supportedAttributeTypes = [],
+        array                        $supportedOperators = []
     ) {
-        $this->attributePathResolver = $attributePathResolver;
+        $this->filterValidator = $filterValidator;
         $this->supportedAttributeTypes = $supportedAttributeTypes;
         $this->supportedOperators = $supportedOperators;
     }
@@ -50,7 +52,7 @@ class ProductProposalTextCollectionFilter extends AbstractAttributeFilter implem
             $this->checkValue($attribute, $value);
         }
 
-        $attributePaths = $this->attributePathResolver->getAttributePaths($attribute, $locale, $channel);
+        $attributePaths = $this->filterValidator->getAttributePaths($attribute, $locale, $channel);
 
         switch ($operator) {
             case Operators::CONTAINS:

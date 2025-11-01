@@ -2,27 +2,27 @@
 
 namespace spec\Pim\Bundle\ExtendedAttributeTypeBundle\Elasticsearch\Filter\Attribute;
 
+use Akeneo\Pim\Enrichment\Component\Product\Validator\ElasticsearchFilterValidator;
 use PhpSpec\ObjectBehavior;
-use Pim\Bundle\CatalogBundle\Elasticsearch\Filter\Attribute\AbstractAttributeFilter;
-use Pim\Bundle\CatalogBundle\Elasticsearch\SearchQueryBuilder;
+use Akeneo\Pim\Enrichment\Bundle\Elasticsearch\Filter\Attribute\AbstractAttributeFilter;
+use Akeneo\Pim\Enrichment\Bundle\Elasticsearch\SearchQueryBuilder;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 use Pim\Bundle\ExtendedAttributeTypeBundle\Elasticsearch\Filter\Attribute\TextCollectionFilter;
-use Pim\Component\Catalog\AttributeTypes;
+use Akeneo\Pim\Structure\Component\AttributeTypes;
 use Akeneo\Pim\Enrichment\Component\Product\Exception\InvalidOperatorException;
 use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\AttributeFilterInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\Operators;
-use Pim\Component\Catalog\Validator\AttributeValidatorHelper;
 use Prophecy\Argument;
 
 class TextCollectionFilterSpec extends ObjectBehavior
 {
     function let(
-        AttributeValidatorHelper $attrValidatorHelper,
-        AttributeInterface $urlList
+        ElasticsearchFilterValidator $filterValidator,
+        AttributeInterface           $urlList
     ) {
         $this->beConstructedWith(
-            $attrValidatorHelper,
+            $filterValidator,
             [ExtendedAttributeTypes::TEXT_COLLECTION],
             [Operators::CONTAINS, Operators::DOES_NOT_CONTAIN, Operators::IS_EMPTY, Operators::IS_NOT_EMPTY]
         );
@@ -100,12 +100,12 @@ class TextCollectionFilterSpec extends ObjectBehavior
     }
 
     function it_adds_a_filter_with_operator_empty(
-        $attrValidatorHelper,
-        AttributeInterface $urlList,
-        SearchQueryBuilder $sqb
+        ElasticsearchFilterValidator $filterValidator,
+        AttributeInterface           $urlList,
+        SearchQueryBuilder           $sqb
     ) {
-        $attrValidatorHelper->validateLocale($urlList, 'en_US')->shouldBeCalled();
-        $attrValidatorHelper->validateScope($urlList, 'ecommerce')->shouldBeCalled();
+        $filterValidator->validateLocaleForAttribute('url_list', 'en_US')->shouldBeCalled();
+        $filterValidator->validateChannelForAttribute('url_list', 'ecommerce')->shouldBeCalled();
 
         $sqb->addMustNot(
             [
@@ -120,12 +120,12 @@ class TextCollectionFilterSpec extends ObjectBehavior
     }
 
     function it_adds_a_filter_with_operator_is_not_empty(
-        $attrValidatorHelper,
-        AttributeInterface $urlList,
-        SearchQueryBuilder $sqb
+        ElasticsearchFilterValidator $filterValidator,
+        AttributeInterface           $urlList,
+        SearchQueryBuilder           $sqb
     ) {
-        $attrValidatorHelper->validateLocale($urlList, 'en_US')->shouldBeCalled();
-        $attrValidatorHelper->validateScope($urlList, 'ecommerce')->shouldBeCalled();
+        $filterValidator->validateLocaleForAttribute('url_list', 'en_US')->shouldBeCalled();
+        $filterValidator->validateChannelForAttribute('url_list', 'ecommerce')->shouldBeCalled();
 
         $sqb->addFilter(
             [
@@ -140,12 +140,12 @@ class TextCollectionFilterSpec extends ObjectBehavior
     }
 
     function it_adds_a_filter_with_operator_contains(
-        $attrValidatorHelper,
-        AttributeInterface $urlList,
-        SearchQueryBuilder $sqb
+        ElasticsearchFilterValidator $filterValidator,
+        AttributeInterface           $urlList,
+        SearchQueryBuilder           $sqb
     ) {
-        $attrValidatorHelper->validateLocale($urlList, 'en_US')->shouldBeCalled();
-        $attrValidatorHelper->validateScope($urlList, 'ecommerce')->shouldBeCalled();
+        $filterValidator->validateLocaleForAttribute('url_list', 'en_US')->shouldBeCalledOnce();
+        $filterValidator->validateChannelForAttribute('url_list', 'ecommerce')->shouldBeCalledOnce();
 
         $sqb->addFilter(
             [
@@ -160,12 +160,12 @@ class TextCollectionFilterSpec extends ObjectBehavior
     }
 
     function it_adds_a_filter_with_operator_does_not_contain(
-        $attrValidatorHelper,
-        AttributeInterface $urlList,
-        SearchQueryBuilder $sqb
+        ElasticsearchFilterValidator $filterValidator,
+        AttributeInterface           $urlList,
+        SearchQueryBuilder           $sqb
     ) {
-        $attrValidatorHelper->validateLocale($urlList, 'en_US')->shouldBeCalled();
-        $attrValidatorHelper->validateScope($urlList, 'ecommerce')->shouldBeCalled();
+        $filterValidator->validateLocaleForAttribute('url_list', 'en_US')->shouldBeCalled();
+        $filterValidator->validateChannelForAttribute('url_list', 'ecommerce')->shouldBeCalled();
 
         $sqb->addFilter([
                 'exists' => [

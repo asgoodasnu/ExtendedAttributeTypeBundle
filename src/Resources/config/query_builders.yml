@@ -5,7 +5,7 @@ services:
     pim_catalog.query.elasticsearch.filter.text_collection:
         class: '%pim_catalog.query.elasticsearch.filter.text_collection.class%'
         arguments:
-            - '@pim_catalog.validator.helper.attribute'
+            - '@pim_catalog.validator.helper.attribute_filter.class'
             - [!php/const \Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes::TEXT_COLLECTION]
             - ['CONTAINS', 'DOES NOT CONTAIN', 'EMPTY', 'NOT EMPTY']
         tags:

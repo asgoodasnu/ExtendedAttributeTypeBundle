@@ -4,6 +4,7 @@ namespace Pim\Bundle\ExtendedAttributeTypeBundle\Completeness\Checker;
 
 use Akeneo\Channel\Infrastructure\Component\Model\ChannelInterface;
 use Akeneo\Channel\Infrastructure\Component\Model\LocaleInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Model\ValueInterface;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 
 /**
@@ -17,15 +18,15 @@ class TextCollectionCompleteChecker
      * {@inheritdoc}
      */
     public function isComplete(
-        $value,
+        ValueInterface $value,
         ChannelInterface $channel = null,
         LocaleInterface $locale = null
-    ) {
-        if (null !== $value->getScope() && $channel->getCode() !== $value->getScope()) {
+    ): bool {
+        if (null !== $value->getScopeCode() && $channel->getCode() !== $value->getScopeCode()) {
             return false;
         }
 
-        if (null !== $value->getLocale() && $locale->getCode() !== $value->getLocale()) {
+        if (null !== $value->getLocaleCode() && $locale->getCode() !== $value->getLocaleCode()) {
             return false;
         }
 
@@ -38,11 +39,11 @@ class TextCollectionCompleteChecker
      * {@inheritdoc}
      */
     public function supportsValue(
-        $value,
+        ValueInterface $value,
         ChannelInterface $channel,
         LocaleInterface $locale
-    ) {
-        return ExtendedAttributeTypes::TEXT_COLLECTION === $value->getAttribute()->getType();
+    ): bool {
+        return ExtendedAttributeTypes::TEXT_COLLECTION === $value->getAttributeCode();
     }
 
     public function supportedAttributeTypes(): array

@@ -11,7 +11,7 @@ namespace Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType;
  */
 final class ExtendedAttributeTypes
 {
-    const TEXT_COLLECTION = 'pim_catalog_text_collection';
+    public const TEXT_COLLECTION = 'pim_catalog_text_collection';
 
-    const BACKEND_TYPE_TEXT_COLLECTION = 'textCollection';
+    public const BACKEND_TYPE_TEXT_COLLECTION = 'textCollection';
 }

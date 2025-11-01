@@ -20,13 +20,17 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "@stable",
-        "phpspec/phpspec": "@stable",
+        "phpspec/phpspec": "^7",
         "phpunit/phpunit": "^10"
     },
     "autoload": {
         "psr-4": {
-            "Pim\\Bundle\\ExtendedAttributeTypeBundle\\": "src/",
-            "Pim\\Bundle\\ExtendedAttributeTypeBundle\\Tests\\": "Tests/"
+            "Pim\\Bundle\\ExtendedAttributeTypeBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pim\\Bundle\\ExtendedAttributeTypeBundle\\Tests\\": "tests/"
         }
     },
     "extra": {
@@ -40,5 +44,19 @@
         "allow-plugins": {
             "symfony/flex": true
         }
+    },
+    "scripts": {
+        "spec": "vendor/bin/phpspec run",
+        "phpunit": "vendor/bin/phpunit",
+        "php-cs-fixer": "vendor/bin/php-cs-fixer",
+        "cs-fix": "@php-cs-fixer fix",
+        "cs-check": "@php-cs-fixer fix --dry-run --diff",
+        "unit": "@phpunit --testsuite=unit",
+        "integration": "@phpunit --testsuite=integration",
+        "test": [
+            "@cs-check",
+            "@unit",
+            "@integration"
+        ]
     }
 }

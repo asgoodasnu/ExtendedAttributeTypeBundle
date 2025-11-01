@@ -13,14 +13,14 @@ class TextCollectionMaskItemGenerator implements MaskItemGeneratorForAttributeTy
     public function forRawValue(string $attributeCode, string $channelCode, string $localeCode, $value): array
     {
         if (
-            !isset($value['amount']) ||
-            '' === $value['amount'] ||
-            !isset($value['unit']) ||
-            '' === $value['unit'] ||
-            !isset($value['base_data']) ||
-            '' === $value['base_data'] ||
-            !isset($value['base_unit']) ||
-            '' === $value['base_unit']
+            !isset($value['amount'])
+            || '' === $value['amount']
+            || !isset($value['unit'])
+            || '' === $value['unit']
+            || !isset($value['base_data'])
+            || '' === $value['base_data']
+            || !isset($value['base_unit'])
+            || '' === $value['base_unit']
         ) {
             return [];
         }

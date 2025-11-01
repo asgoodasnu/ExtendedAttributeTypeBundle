@@ -34,7 +34,7 @@ use Akeneo\Pim\Enrichment\Component\Product\Connector\ArrayConverter\FlatToStand
 class TextCollectionConverter implements ValueConverterInterface
 {
     /** @var string[] */
-    protected $supportedFieldTypes;
+    protected array $supportedFieldTypes;
 
     /**
      * @param string[] $supportedFieldTypes
@@ -47,7 +47,7 @@ class TextCollectionConverter implements ValueConverterInterface
     /**
      * {@inheritdoc}
      */
-    public function supportsField($attributeType)
+    public function supportsField($attributeType): bool
     {
         return in_array($attributeType, $this->supportedFieldTypes);
     }
@@ -55,9 +55,9 @@ class TextCollectionConverter implements ValueConverterInterface
     /**
      * {@inheritdoc}
      */
-    public function convert(array $attributeFieldInfo, $value)
+    public function convert(array $attributeFieldInfo, $value): array
     {
-        if ('' === trim($value)) {
+        if (!is_string($value) || '' === trim($value)) {
             return [];
         }
 

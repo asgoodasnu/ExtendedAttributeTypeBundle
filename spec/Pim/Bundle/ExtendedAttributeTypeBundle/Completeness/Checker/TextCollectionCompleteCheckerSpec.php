@@ -4,24 +4,21 @@ namespace spec\Pim\Bundle\ExtendedAttributeTypeBundle\Completeness\Checker;
 
 use PhpSpec\ObjectBehavior;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
-use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
-use Akeneo\Channel\Component\Model\ChannelInterface;
-use Akeneo\Channel\Component\Model\LocaleInterface;
-use Akeneo\Channel\Component\Model\ValueInterface;
+use Akeneo\Channel\Infrastructure\Component\Model\ChannelInterface;
+use Akeneo\Channel\Infrastructure\Component\Model\LocaleInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Model\ValueInterface;
 
 class TextCollectionCompleteCheckerSpec extends ObjectBehavior
 {
     function it_check_supported_types(
         ValueInterface $value,
-        AttributeInterface $attribute,
         ChannelInterface $channel,
         LocaleInterface $locale
     ) {
-        $value->getAttribute()->willReturn($attribute);
-        $attribute->getType()->willReturn(ExtendedAttributeTypes::TEXT_COLLECTION);
+        $value->getAttributeCode()->willReturn(ExtendedAttributeTypes::TEXT_COLLECTION);
         $this->supportsValue($value, $channel, $locale)->shouldReturn(true);
 
-        $attribute->getType()->willReturn('any_other_type');
+        $value->getAttributeCode()->willReturn('any_other_type');
         $this->supportsValue($value, $channel, $locale)->shouldReturn(false);
     }
 
@@ -30,8 +27,8 @@ class TextCollectionCompleteCheckerSpec extends ObjectBehavior
         ChannelInterface $channel,
         LocaleInterface $locale
     ) {
-        $value->getScope()->willReturn(null);
-        $value->getLocale()->willReturn(null);
+        $value->getScopeCode()->willReturn(null);
+        $value->getLocaleCode()->willReturn(null);
         $value->getData()->willReturn(['foo']);
         $this->isComplete($value, $channel, $locale)->shouldReturn(true);
 
