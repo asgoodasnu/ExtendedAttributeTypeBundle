@@ -2,10 +2,10 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\Job;
 
-use Akeneo\Bundle\BatchBundle\Command\BatchCommand;
-use Akeneo\Channel\Component\Model\ProductInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\Operators;
-use Pim\Component\Catalog\Query\ProductQueryBuilderInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Query\ProductQueryBuilderInterface;
+use Akeneo\Tool\Bundle\BatchBundle\Command\BatchCommand;
 
 /**
  * @author    Mathias METAYER <mathias.metayer@akeneo.com>

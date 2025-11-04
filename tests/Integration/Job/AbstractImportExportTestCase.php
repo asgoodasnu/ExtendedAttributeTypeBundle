@@ -2,9 +2,9 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\Job;
 
+use Akeneo\Pim\Structure\Component\AttributeTypes;
 use Pim\Bundle\ExtendedAttributeTypeBundle\AttributeType\ExtendedAttributeTypes;
 use Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration\AbstractTestCase;
-use Pim\Component\Catalog\AttributeTypes;
 
 /**
  * @author    Mathias METAYER <mathias.metayer@akeneo.com>
@@ -22,7 +22,7 @@ class AbstractImportExportTestCase extends AbstractTestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->loadData();

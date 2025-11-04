@@ -1,5 +1,3 @@
-version: '2'
-
 services:
   fpm:
     image: akeneo/fpm:php-7.1

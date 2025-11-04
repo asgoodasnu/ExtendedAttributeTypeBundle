@@ -3,7 +3,7 @@
 namespace spec\Pim\Bundle\ExtendedAttributeTypeBundle\ArrayConverter\StandardToFlat\Product\ValueConverter;
 
 use PhpSpec\ObjectBehavior;
-use Pim\Component\Connector\ArrayConverter\FlatToStandard\Product\AttributeColumnsResolver;
+use Akeneo\Pim\Enrichment\Component\Product\Connector\ArrayConverter\FlatToStandard\AttributeColumnsResolver;
 use Prophecy\Argument;
 
 /**
@@ -21,7 +21,7 @@ class TextCollectionConverterSpec extends ObjectBehavior
     function it_is_a_converter()
     {
         $this->shouldImplement(
-            'Akeneo\Pim\Enrichment\Component\Product\Connector\ArrayConverter\FlatToStandard\ValueConverter\ValueConverterInterface'
+            'Akeneo\Pim\Enrichment\Component\Product\Connector\ArrayConverter\StandardToFlat\Product\ValueConverter\ValueConverterInterface'
         );
     }
 

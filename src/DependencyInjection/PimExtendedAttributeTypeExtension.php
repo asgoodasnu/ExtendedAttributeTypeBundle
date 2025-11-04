@@ -19,7 +19,7 @@ class PimExtendedAttributeTypeExtension extends Extension
     /**
      * {@inheritdoc}
      */
-    public function load(array $config, ContainerBuilder $container)
+    public function load(array $config, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ .'/../Resources/config'));
         $loader->load('array_converters.yml');

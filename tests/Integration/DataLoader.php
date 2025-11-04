@@ -2,12 +2,12 @@
 
 namespace Pim\Bundle\ExtendedAttributeTypeBundle\Tests\Integration;
 
-use Akeneo\Component\Batch\Model\JobInstance;
+use Akeneo\Channel\Infrastructure\Component\Model\ChannelInterface;
+use Akeneo\Channel\Infrastructure\Component\Repository\ChannelRepositoryInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Model\ProductInterface;
 use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
-use Akeneo\Channel\Component\Model\ChannelInterface;
-use Akeneo\Channel\Component\Model\FamilyInterface;
-use Akeneo\Channel\Component\Model\ProductInterface;
-use Pim\Component\Catalog\Repository\ChannelRepositoryInterface;
+use Akeneo\Pim\Structure\Component\Model\FamilyInterface;
+use Akeneo\Tool\Component\Batch\Model\JobInstance;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**

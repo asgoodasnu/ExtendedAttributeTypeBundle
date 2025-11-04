@@ -4,7 +4,7 @@ namespace spec\Pim\Bundle\ExtendedAttributeTypeBundle\DataGrid\Form\Type\Filter;
 
 use PhpSpec\ObjectBehavior;
 use Pim\Bundle\ExtendedAttributeTypeBundle\DataGrid\Form\Type\Filter\TextCollectionFilterType;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class TextCollectionFilterTypeSpec extends ObjectBehavior
 {
